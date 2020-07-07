@@ -1,0 +1,11 @@
+# Sample docker-compose file.
+# 
+version: '3'
+
+services:
+  web:
+    build: ./packages/web
+    ports:
+      - "80:80"
+  app:
+    build: ./packages/app

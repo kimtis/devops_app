@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "scripts": {
+    "install": "lerna bootstrap --no-ci",
+    "start": "lerna exec -- npm start",
+    "clean": "rm -rf node_modules && lerna exec -- npm run clean"
+  },
+  "dependencies": {}
+}
