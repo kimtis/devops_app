@@ -36,7 +36,8 @@ export default class LogFactory {
     const logger = this.getLogger(name);
     const option = {
       format: '":method :url HTTP/:http-version" :status :content-length',
-      level: 'auto'
+      level: 'auto',
+      nolog: '"\\.ico"'
     }
     return log4js.connectLogger(logger, option);
   }
