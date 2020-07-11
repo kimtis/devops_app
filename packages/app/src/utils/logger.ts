@@ -1,11 +1,11 @@
-import log4js, { Logger, Level } from 'log4js';
-import promClient from 'prom-client';
-import path from 'path';
+import log4js, { Logger, Level } from "log4js";
+import promClient from "prom-client";
+import path from "path";
 
 const metrics = new promClient.Gauge({
-  name: 'log4js_events',
-  help: 'Number of each level log events',
-  labelNames: ['level']
+  name: "log4js_events",
+  help: "Number of each level log events",
+  labelNames: ["level"]
 });
 
 log4js.configure({
@@ -25,7 +25,7 @@ export default class LogFactory {
     const origin = logger._log.bind(logger);
     logger._log = function (level: string, data: any) {
       const levelStr = level.toString().toLowerCase();
-      metrics.labels('all').inc();
+      metrics.labels("all").inc();
       metrics.labels(levelStr).inc();
       return origin(level, data);
     };
@@ -35,7 +35,7 @@ export default class LogFactory {
   static connect(name: string): any {
     const logger = this.getLogger(name);
     const option = {
-      format: '":method :url HTTP/:http-version" :status :content-length',
+      format: "\":method :url HTTP/:http-version\" :status :content-length",
       level: 'auto',
       nolog: '"\\.ico"'
     }
