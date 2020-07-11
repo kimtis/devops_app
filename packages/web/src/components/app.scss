@@ -177,16 +177,3 @@ a {
     display: none;
   }
 }
-
-// hack-fix: remove crappy yellow background from auto-filled inputs in chrome
-@keyframes autofill-remove-bgc {
-  to {
-    color: inherit;
-    background: inherit;
-  }
-}
-
-input:-webkit-autofill {
-  -webkit-animation-name: autofill-remove-bgc;
-  -webkit-animation-fill-mode: both;
-}
