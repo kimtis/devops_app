@@ -19,7 +19,7 @@
 html {
   font-size: 62.5%; // 1 rem == 10px
   color: $textColorPrimary;
-  background-color: $lensBlue;
+  background-color: $mainBackground;
   --flex-gap: #{$padding};
 }
 

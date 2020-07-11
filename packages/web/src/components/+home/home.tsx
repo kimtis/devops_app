@@ -1,9 +1,15 @@
 import "./home.scss";
 
 import React from "react";
+import axios from "axios";
 
 export function Home() {
-  return (
-    <div>Home</div>
-  )
+  const [hello, setHello] = React.useState("Loading...");
+  React.useEffect(() => {
+    axios.get("/api")
+      .then(resp => resp.data)
+      .then(data => setHello(data))
+      .catch(err => setHello(err.toString()));
+  }, []);
+  return <div>{hello}</div>;
 }
