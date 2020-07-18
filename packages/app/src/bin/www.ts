@@ -1,7 +1,7 @@
 import http from "http";
-import app from "../app";
+import app, { config } from "../app";
 
-const port = parseInt(process.env.PORT || "8080");
+const port = config.server.port;
 app.disable("x-powered-by");
 app.set("port", port);
 

@@ -3,17 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.12.2",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-prom-bundle": "^6.0.0",
     "http-errors": "^1.8.0",
     "log4js": "^6.3.0",
-    "prom-client": "^12.0.0"
+    "prom-client": "^12.0.0",
+    "yaml": "^1.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
@@ -27,7 +31,7 @@
   "scripts": {
     "start": "nodemon --delay 100ms",
     "build": "babel src --out-dir build --extensions \".ts\" --source-maps inline",
-    "serve": "node build/bin/www.js",
+    "serve": "NODE_ENV=development node build/bin/www.js",
     "clean": "rm -rf node_modules build"
   },
   "eslintConfig": {
@@ -48,7 +52,21 @@
   "babel": {
     "presets": [
       "@babel/preset-env",
-      "@babel/typescript"
+      "@babel/preset-typescript"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
     ]
   }
 }

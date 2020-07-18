@@ -16,7 +16,9 @@ WORKDIR /skt/app
 # Just copy app and its dependencies into docker image.
 COPY --from=builder /app/build        build
 COPY --from=builder /app/node_modules node_modules
+COPY --from=builder /app/app.yaml     /etc/application/app.yaml
 
 EXPOSE 8080
 ENV NODE_ENV production
+ENV CONFIG_FILE /etc/application/app.yaml
 CMD node build/bin/www.js

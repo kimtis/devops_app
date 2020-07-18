@@ -7,6 +7,9 @@ import errorHandler from "./middlewares/error"
 import LogFactory from "./utils/logger";
 import apiRouter from "./routes/index";
 
+import Config from "./utils/config";
+const config = Config.getInstance();
+
 const app = express();
 app.use(promBundle({ includeMethod: true }));
 app.use(LogFactory.connect("express"));
@@ -21,3 +24,6 @@ app.use((req, res, next) => next(createHttpError(404)));
 app.use(errorHandler);
 
 export default app;
+export {
+  config
+}
